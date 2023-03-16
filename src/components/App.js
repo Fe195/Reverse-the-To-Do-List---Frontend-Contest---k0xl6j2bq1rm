@@ -5,6 +5,7 @@ import '../styles/App.css';
 function ToDo({ todoId,createdAt }) {
   
   return (
+    <tr>
     <td>
       <p>{todoId}</p>
     </td>
