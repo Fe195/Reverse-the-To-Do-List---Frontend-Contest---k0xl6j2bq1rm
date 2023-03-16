@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
 import '../styles/App.css';
 
-function ToDo(props) {
-  const [text, setText] =useState([]);
+var todof;
+var todoS;
+function ToDo(todos,val) {
+  const getVal1 = (e) => {
+    console.log(e.target.value);
+    todof=(e.target.value);
+  }
+  const getVal2 =(e) => {
+    console.log(e.target.value);
+    todoS =(e.target.value);
   return (<tr>
     <td>
-      <p>{props.todoId}</p>
+      <p>{todos[val].id}</p>
     </td>
     <td>
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+    {(todos[val].id == "todo1") ? <input type="text" id ={todos[val].id} onInput={getVAL1} value={todos[val].todo}/>:<input type="text" id={todos[val].id} onInput={getVal2} value={todos[val].todo} />}
+    
     </td>
     <td>
-      <p>{props.createdAt}</p>
+      <p>{todos[val].createdAt}</p>
     </td>
   </tr>)
 }
@@ -25,16 +34,17 @@ function App() {
     createdAt: '18:00',
   }
   ]);
-  function reversehandle(){
-    const s=[...todos]
-    setTodos(s.reverse());
-  }
+  const reverse =() =>{
+    setTodos([{id: "todo2", todo:todoS,createdAt:"18:00"},{id:"todo1",todof,createdAt:"20:30"}]);
+  };
+  
   return (
     <div id="main">
-      <button onClick={reverseHandle}>Reverse</button>
+      <button onClick={reverse}>Reverse</button>
       <table>
         <tbody>
-    {todos.map((ele)=> <ToDo key={ele.id} todoId={ele.id} createdAt={ele.createdAt} />)}
+    {ToDo((todos),0)}
+    {ToDo((todos),1)}
         </tbody>
       </table>
     </div>
