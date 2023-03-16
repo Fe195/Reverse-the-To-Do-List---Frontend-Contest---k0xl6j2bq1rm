@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../styles/App.css';
 
 
-function ToDo(todoId,createdAt) {
+function ToDo({ todoId,createdAt }) {
   
   return (
     <td>
